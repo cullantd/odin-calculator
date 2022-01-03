@@ -1,9 +1,6 @@
 //here be VARIABLES
-let displayString = "";
-let operandA;
-let operandB;
-let selectedOperator;
-let solution;
+let operandA, operandB, operation;
+let displayInput = "";
 
 const displayElement = document.getElementById("display");
 const numberButtons = document.querySelectorAll('.number-button');
@@ -52,41 +49,45 @@ function clearDisplay() {
 }
 
 function updateDisplay(stringToReplace) {
-    console.log("Updating Diplay with: " + stringToReplace);
+    console.log("Updating Display with: " + stringToReplace);
     displayElement.textContent = stringToReplace;
 }
 
 //here be MAIN
 clearDisplay();
 
-//if button w/ class number-button is clicked, append to display
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener('click', () => {
         console.log("Number pressed: " + numberButton.id);
-        appendToDisplay(numberButton.id);
+        displayInput = displayInput.concat(numberButton.id);
+        updateDisplay(displayInput);
     });
 });
 
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener('click', () => {
         console.log("Operator pressed: " + operatorButton.id);
-        operandA = parseInt(displayString);
-        selectedOperator = operatorButton.id;
-        appendToDisplay(operatorButton.dataset.symbol);
+        operandA = parseInt(displayInput);
+        operation = operatorButton.id;
+        displayInput = "";
         clearDisplay();
+        updateDisplay(operatorButton.dataset.symbol);
     });
 });
 
 equalsButton.addEventListener('click', () => {
-    console.log("Equals button pressed")
-    operandB = parseInt(displayString);
-    clearDisplay();
-    solution = operate(operandA, operandB, selectedOperator);
+    console.log("Equals button pressed");
+    operandB = parseInt(displayInput);
+    solution = operate(operandA, operandB, operation);
     updateDisplay(solution);
+    operandA = parseInt(displayInput);
 });
 
 clearButton.addEventListener('click', () => {
-    console.log("Clear button pressed")
+    console.log("Clear button pressed");
+    operandA = "";
+    operandB = "";
+    solution = "";
+    displayInput = "";
     clearDisplay();
-    displayString = "";
 });

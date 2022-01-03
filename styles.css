@@ -1,9 +1,54 @@
+title {
+    color: white;
+}
+
+body {
+    background-color: black;
+}
+
+#wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #calculator-body {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #03A062;
+    height: 350px;
+    width: 250px;
 }
 
 .calc-row {
     display: flex;
     flex-direction: row;
+}
+
+#display {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    border: 1px solid;
+    width: 198px;
+    height: 48px;
+    background-color: white;
+    font-size: 28px;
+}
+
+/* buttons */
+.number-button, .operator-button, #equals, #decimal { 
+    font-size: 36px;
+    width: 50px;
+    height: 50px;
+}
+
+#clear {
+    font-size: 36px;
+    width: 200px;
+    height: 50px;
 }
