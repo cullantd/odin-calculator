@@ -1,0 +1,9 @@
+#calculator-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-row {
+    display: flex;
+    flex-direction: row;
+}
