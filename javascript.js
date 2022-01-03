@@ -1,6 +1,8 @@
 //here be VARIABLES
 let operandA, operandB, operation;
 let displayInput = "";
+let operandASet = false;
+let operationSet = false;
 
 const displayElement = document.getElementById("display");
 const numberButtons = document.querySelectorAll('.number-button');
@@ -19,11 +21,20 @@ function subtract(a,b) {
 }
 
 function divide(a,b) {
-    return a / b;
+    if (b === 0) {
+        return ("Divide by 0 error!");
+        //make text red, formatting
+    } else {
+        return a / b;
+    }
 }
 
 function multiply(a,b) {
     return a * b;
+}
+
+function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
 function operate(a, b, operator) {
@@ -47,6 +58,28 @@ function appendToDisplay(number) {
 function clearDisplay() {
     updateDisplay("");
 }
+function clearAll() {
+    operandA = 0;
+    operandASet = false;
+    operandB = 0;
+    operation = null;
+    operationSet = false;
+    solution = "";
+    displayInput = "";
+    clearDisplay();
+}
+
+function equals() {
+    if (operandASet === false || operationSet === false) {
+        updateDisplay("Error!");
+    } else {
+        operandB = parseInt(displayInput);
+        solution = operate(operandA, operandB, operation);
+        updateDisplay(round(solution, 9));
+        operandA = solution;
+        displayInput = "";
+    }
+}
 
 function updateDisplay(stringToReplace) {
     console.log("Updating Display with: " + stringToReplace);
@@ -67,27 +100,32 @@ numberButtons.forEach((numberButton) => {
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener('click', () => {
         console.log("Operator pressed: " + operatorButton.id);
-        operandA = parseInt(displayInput);
-        operation = operatorButton.id;
-        displayInput = "";
-        clearDisplay();
-        updateDisplay(operatorButton.dataset.symbol);
+        if (operandASet === true) {
+            operandB = parseInt(displayInput);
+        } else {
+            operandA = parseInt(displayInput);
+            operandASet = true; // flag for calculations that have more than one operator
+        }
+
+        if (operationSet === true) {             //treat as "equals" press, store operator for next
+            equals();
+            operation = operatorButton.id;
+        } else {
+            operation = operatorButton.id;
+            operationSet = true; //flag for calculations that have more than one operator
+            displayInput = "";
+            clearDisplay();
+            updateDisplay(operatorButton.dataset.symbol);
+        }
     });
 });
 
 equalsButton.addEventListener('click', () => {
     console.log("Equals button pressed");
-    operandB = parseInt(displayInput);
-    solution = operate(operandA, operandB, operation);
-    updateDisplay(solution);
-    operandA = parseInt(displayInput);
+    equals();
 });
 
 clearButton.addEventListener('click', () => {
     console.log("Clear button pressed");
-    operandA = "";
-    operandB = "";
-    solution = "";
-    displayInput = "";
-    clearDisplay();
+    clearAll();
 });
