@@ -2,6 +2,7 @@ body {
     background-color: #222831;
     margin: 0;
     color: #EEEEEE;
+    font-family: "Courier New";
 }
 
 h1 {
@@ -26,7 +27,7 @@ h1 {
 
     border: 2px solid #00ADB5;
     width: 300px;
-    height: 600px;
+    height: 450px;
     padding: 20px;
 }
 
@@ -65,20 +66,13 @@ h1 {
 button {
     color: #EEEEEE;
     background-color: #393E46;
-    font-size: 22px;
+    font-size: 26px;
     border-radius: 12px;
     height: 60px;
     width: 60px;
+    font-family: "Courier New";
 }
 
 #clear, #backspace {
     width: 110px;
-}
-
-.operator-button {
-
-}
-
-.number-button {
-
 }
