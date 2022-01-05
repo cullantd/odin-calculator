@@ -97,7 +97,7 @@ numberButtons.forEach((numberButton) => {
 
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener('click', () => {
-        if (displayInput < MAX_SAFE_INTEGER) {
+        if (parseInt(displayInput) < Number.MAX_SAFE_INTEGER) {
             if (operandASet === true) {
                 operandB = parseFloat(displayInput);
             } else {
