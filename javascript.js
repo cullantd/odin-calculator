@@ -90,9 +90,12 @@ clearDisplay();
 
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener('click', () => {
-        if ()
-        displayInput = displayInput.concat(numberButton.id);
-        updateDisplay(displayInput);
+        if (numberButton.id < MAX_SAFE_INTEGER) {
+            displayInput = displayInput.concat(numberButton.id);
+            updateDisplay(displayInput);
+        } else {
+            updateDisplay("Integer too big!");
+        }
     });
 });
 
