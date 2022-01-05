@@ -16,12 +16,10 @@ const decimalButton = document.getElementById('decimal');
 //here be FUNCTIONS
 //a and b are both numbers
 function add(a,b) {
-    console.log("Performing operation: " + a + " + " + b);
     return a + b;
 }
 
 function subtract(a,b) {
-    console.log("Performing operation: " + a + " - " + b);
     return a-b;
 }
 
@@ -30,13 +28,11 @@ function divide(a,b) {
         return ("Divide by 0 error!");
         //make text red, formatting
     } else {
-        console.log("Performing operation: " + a + " / " + b);
         return a / b;
     }
 }
 
 function multiply(a,b) {
-    console.log("Performing operation: " + a + " * " + b);
     return a * b;
 }
 
@@ -81,13 +77,11 @@ function equals() {
         solution = operate(operandA, operandB, operation);
         updateDisplay(round(solution, 9));
         operandA = solution;
-        console.log("operandA is: " + operandA);
         displayInput = "";
     }
 }
 
 function updateDisplay(stringToReplace) {
-    console.log("Updating Display with: " + stringToReplace);
     displayElement.textContent = stringToReplace;
 }
 
@@ -96,7 +90,7 @@ clearDisplay();
 
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener('click', () => {
-        console.log("Number pressed: " + numberButton.id);
+        if ()
         displayInput = displayInput.concat(numberButton.id);
         updateDisplay(displayInput);
     });
@@ -104,13 +98,10 @@ numberButtons.forEach((numberButton) => {
 
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener('click', () => {
-        console.log("Operator pressed: " + operatorButton.id);
         if (operandASet === true) {
             operandB = parseFloat(displayInput);
-            console.log("operandB is: " + operandB);
         } else {
             operandA = parseFloat(displayInput);
-            console.log("operandA is: " + operandA);
             operandASet = true; // flag for calculations that have more than one operator
             decimalPressed = false; // in case the 2nd number also contains a decimal
         }
@@ -129,7 +120,6 @@ operatorButtons.forEach((operatorButton) => {
 });
 
 equalsButton.addEventListener('click', () => {
-    console.log("Equals button pressed");
     equals();
 });
 
@@ -139,13 +129,11 @@ clearButton.addEventListener('click', () => {
 });
 
 backspaceButton.addEventListener('click', () => {
-    console.log("Backspace button pressed");
     displayInput = displayInput.slice(0, -1);
     updateDisplay(displayInput);
 });
 
 decimalButton.addEventListener('click', () => {
-    console.log("Decimal button pressed");
     if (decimalPressed === false) {
         displayInput = displayInput.concat('.');
         updateDisplay(displayInput);
@@ -155,8 +143,6 @@ decimalButton.addEventListener('click', () => {
 
 // keyboard support
 window.addEventListener('keyup', function(event) { //or keyup?
-    console.log("keyup event key: " + event.key);
-    
     switch (event.key) {
         case '1':
             document.getElementById('1').click();
@@ -212,6 +198,5 @@ window.addEventListener('keyup', function(event) { //or keyup?
         case '.': // .
             document.getElementById('decimal').click();
             break;
-
     }
 });
