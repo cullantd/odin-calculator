@@ -57,14 +57,10 @@ function operate(a, b, operator) {
     }
 }
 
-function appendToDisplay(number) {
-    displayString = displayString.concat(number);
-    updateDisplay(displayString);
-}
-
 function clearDisplay() {
     updateDisplay("");
 }
+
 function clearAll() {
     operandA = 0;
     operandASet = false;
@@ -157,26 +153,65 @@ decimalButton.addEventListener('click', () => {
     }
 });
 
-// listeners for keys
-window.addEventListener('keydown', function(event) { //or keyup?
+// keyboard support
+window.addEventListener('keyup', function(event) { //or keyup?
+    console.log("keyup event key: " + event.key);
+    
     switch (event.key) {
-    case 49: // 1
-    case 50: // 2
-    case 51: // 3
-    case 52: // 4
-    case 53: // 5
-    case 54: // 6
-    case 55: // 7
-    case 56: // 8 (also *?)
-    case 57: // 9
-    case 48: // 0
-
-    case 13: // enter
-    case 187: // +
-    case 189: // -
-    case 191: // /
-    case 8: // backspace
-    case 67: // c (clear)
+        case '1':
+            document.getElementById('1').click();
+            break;
+        case '2':
+            document.getElementById('2').click();
+            break;
+        case '3':
+            document.getElementById('3').click();
+            break;
+        case '4':
+            document.getElementById('4').click();
+            break;
+        case '5':
+            document.getElementById('5').click();
+            break;
+        case '6':
+            document.getElementById('6').click();
+            break;
+        case '7':
+            document.getElementById('7').click();
+            break;
+        case '8':
+            document.getElementById('8').click();
+            break;
+        case '9':
+            document.getElementById('9').click();
+            break;
+        case '0':
+            document.getElementById('10').click();
+            break;
+        case 'Enter':
+            document.getElementById('equals').click();
+            break;
+        case '+':
+            document.getElementById('addition').click();
+            break;
+        case "-":
+            document.getElementById('subtraction').click();
+            break;
+        case '/':
+            document.getElementById('division').click();
+            break;
+        case '*':
+            document.getElementById('multiplication').click();
+            break;
+        case 'Backspace':
+            document.getElementById('backspace').click();
+            break;
+        case 'c': // clear
+            document.getElementById('clear').click();
+            break;
+        case '.': // .
+            document.getElementById('decimal').click();
+            break;
 
     }
-  });
+});

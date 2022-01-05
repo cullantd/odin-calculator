@@ -19,13 +19,15 @@ body {
     align-items: center;
     justify-content: space-evenly;
     background-color: #03A062;
-    height: 350px;
-    width: 250px;
+    border-radius: 12px;
+    padding: 25px;
 }
 
 .calc-row {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: space-evenly;
 }
 
 #display {
@@ -33,11 +35,14 @@ body {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    border: 1px solid;
-    width: 198px;
-    height: 48px;
+    border: 2px solid;
+    width: 240px;
+    height: 60px;
     background-color: white;
     font-size: 28px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 
 /* buttons */
@@ -51,4 +56,9 @@ body {
     font-size: 28px;
     width: 100px;
     height: 50px;
+}
+
+button {
+    border-radius: 12px;
+    margin: 5px;
 }
