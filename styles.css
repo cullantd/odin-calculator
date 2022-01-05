@@ -1,9 +1,11 @@
-h1 {
-    color: white;
+body {
+    background-color: #222831;
+    margin: 0;
+    color: #EEEEEE;
 }
 
-body {
-    background-color: black;
+h1 {
+    
 }
 
 #wrap {
@@ -11,54 +13,72 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100vh;
 }
 
 #calculator-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    background-color: #03A062;
+
+    background-color: #EEEEEE;
     border-radius: 12px;
-    padding: 25px;
+
+    border: 2px solid #00ADB5;
+    width: 300px;
+    height: 600px;
+    padding: 20px;
+}
+
+#display {
+    color: #EEEEEE;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    border: 2px solid #00ADB5;
+    background-color: #393E46;
+    font-size: 28px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+
+    width: 286px;
+    height: 56px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
 }
 
 .calc-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: space-evenly;
-}
+    width: 300px;
+    margin: 5px;
 
-#display {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    border: 2px solid;
-    width: 240px;
-    height: 60px;
-    background-color: white;
-    font-size: 28px;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 5px;
-}
-
-/* buttons */
-.number-button, .operator-button, #equals, #decimal { 
-    font-size: 36px;
-    width: 50px;
-    height: 50px;
-}
-
-#clear, #backspace{
-    font-size: 28px;
-    width: 100px;
-    height: 50px;
+    justify-content: space-evenly;
 }
 
 button {
+    color: #EEEEEE;
+    background-color: #393E46;
+    font-size: 22px;
     border-radius: 12px;
-    margin: 5px;
+    height: 60px;
+    width: 60px;
+}
+
+#clear, #backspace {
+    width: 110px;
+}
+
+.operator-button {
+
+}
+
+.number-button {
+
 }
