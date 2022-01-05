@@ -90,34 +90,33 @@ clearDisplay();
 
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener('click', () => {
-        if (numberButton.id < MAX_SAFE_INTEGER) {
-            displayInput = displayInput.concat(numberButton.id);
-            updateDisplay(displayInput);
-        } else {
-            updateDisplay("Integer too big!");
-        }
+        displayInput = displayInput.concat(numberButton.id);
+        updateDisplay(displayInput);
     });
 });
 
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener('click', () => {
-        if (operandASet === true) {
-            operandB = parseFloat(displayInput);
+        if (displayInput < MAX_SAFE_INTEGER) {
+            if (operandASet === true) {
+                operandB = parseFloat(displayInput);
+            } else {
+                operandA = parseFloat(displayInput);
+                operandASet = true; // flag for calculations that have more than one operator
+                decimalPressed = false; // in case the 2nd number also contains a decimal
+            }
+            if (operationSet === true) { //treat as "equals" press, store operator for next
+                equals();
+                operation = operatorButton.id;
+            } else {
+                operation = operatorButton.id;
+                operationSet = true; //flag for calculations that have more than one operator
+                displayInput = "";
+                clearDisplay();
+                updateDisplay(operatorButton.dataset.symbol);
+            }
         } else {
-            operandA = parseFloat(displayInput);
-            operandASet = true; // flag for calculations that have more than one operator
-            decimalPressed = false; // in case the 2nd number also contains a decimal
-        }
-
-        if (operationSet === true) { //treat as "equals" press, store operator for next
-            equals();
-            operation = operatorButton.id;
-        } else {
-            operation = operatorButton.id;
-            operationSet = true; //flag for calculations that have more than one operator
-            displayInput = "";
-            clearDisplay();
-            updateDisplay(operatorButton.dataset.symbol);
+            updateDisplay("Integer too big!");
         }
     });
 });
